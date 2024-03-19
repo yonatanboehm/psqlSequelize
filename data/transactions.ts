@@ -1,4 +1,4 @@
-import { uuid } from "uuidv4"
+import { v4 as uuid } from "uuid"
 import { TransactionAttributes } from "../models/transactions"
 import { accounts } from "./accounts"
 
@@ -17,98 +17,133 @@ export const transactions: TransactionAttributes[] = [
   {
     id: uuid(),
     date: generateDate(),
-    amount: (Math.random() * 10000) - 5000,
+    amount: Number(((Math.random() * 10000) - 5000).toFixed(2)),
     description: 'transaction',
     accountId: getAccountId()
   },
   {
     id: uuid(),
     date: generateDate(),
-    amount: (Math.random() * 10000) - 5000,
+    amount: Number(((Math.random() * 10000) - 5000).toFixed(2)),
     description: 'transaction',
     accountId: getAccountId()
   },
   {
     id: uuid(),
     date: generateDate(),
-    amount: (Math.random() * 10000) - 5000,
+    amount: Number(((Math.random() * 10000) - 5000).toFixed(2)),
     description: 'transaction',
     accountId: getAccountId()
   },
   {
     id: uuid(),
     date: generateDate(),
-    amount: (Math.random() * 10000) - 5000,
+    amount: Number(((Math.random() * 10000) - 5000).toFixed(2)),
     description: 'transaction',
     accountId: getAccountId()
   },
   {
     id: uuid(),
     date: generateDate(),
-    amount: (Math.random() * 10000) - 5000,
+    amount: Number(((Math.random() * 10000) - 5000).toFixed(2)),
     description: 'transaction',
     accountId: getAccountId()
   },
   {
     id: uuid(),
     date: generateDate(),
-    amount: (Math.random() * 10000) - 5000,
+    amount: Number(((Math.random() * 10000) - 5000).toFixed(2)),
     description: 'transaction',
     accountId: getAccountId()
   },
   {
     id: uuid(),
     date: generateDate(),
-    amount: (Math.random() * 10000) - 5000,
+    amount: Number(((Math.random() * 10000) - 5000).toFixed(2)),
     description: 'transaction',
     accountId: getAccountId()
   },
   {
     id: uuid(),
     date: generateDate(),
-    amount: (Math.random() * 10000) - 5000,
+    amount: Number(((Math.random() * 10000) - 5000).toFixed(2)),
     description: 'transaction',
     accountId: getAccountId()
   },
   {
     id: uuid(),
     date: generateDate(),
-    amount: (Math.random() * 10000) - 5000,
+    amount: Number(((Math.random() * 10000) - 5000).toFixed(2)),
     description: 'transaction',
     accountId: getAccountId()
   },
   {
     id: uuid(),
     date: generateDate(),
-    amount: (Math.random() * 10000) - 5000,
+    amount: Number(((Math.random() * 10000) - 5000).toFixed(2)),
     description: 'transaction',
     accountId: getAccountId()
   },
   {
     id: uuid(),
     date: generateDate(),
-    amount: (Math.random() * 10000) - 5000,
+    amount: Number(((Math.random() * 10000) - 5000).toFixed(2)),
     description: 'transaction',
     accountId: getAccountId()
   },
   {
     id: uuid(),
     date: generateDate(),
-    amount: (Math.random() * 10000) - 5000,
+    amount: Number(((Math.random() * 10000) - 5000).toFixed(2)),
     description: 'transaction',
     accountId: getAccountId()
   },
   {
     id: uuid(),
     date: generateDate(),
-    amount: (Math.random() * 10000) - 5000,
+    amount: Number(((Math.random() * 10000) - 5000).toFixed(2)),
     description: 'transaction',
     accountId: getAccountId()
   },
   {
     id: uuid(),
     date: generateDate(),
-    amount: (Math.random() * 10000) - 5000,
+    amount: Number(((Math.random() * 10000) - 5000).toFixed(2)),
+    description: 'transaction',
+    accountId: getAccountId()
+  },
+  {
+    id: uuid(),
+    date: generateDate(),
+    amount: Number(((Math.random() * 10000) - 5000).toFixed(2)),
+    description: 'transaction',
+    accountId: getAccountId()
+  },
+  {
+    id: uuid(),
+    date: generateDate(),
+    amount: Number(((Math.random() * 10000) - 5000).toFixed(2)),
+    description: 'transaction',
+    accountId: getAccountId()
+  },
+  {
+    id: uuid(),
+    date: generateDate(),
+    amount: Number(((Math.random() * 10000) - 5000).toFixed(2)),
+    description: 'transaction',
+    accountId: getAccountId()
+  },
+  {
+    id: uuid(),
+    date: generateDate(),
+    amount: Number(((Math.random() * 10000) - 5000).toFixed(2)),
+    description: 'transaction',
+    accountId: getAccountId()
+  },
+  {
+    id: uuid(),
+    date: generateDate(),
+    amount: Number(((Math.random() * 10000) - 5000).toFixed(2)),
     description: 'transaction',
     accountId: getAccountId()
   }

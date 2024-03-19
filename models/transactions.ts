@@ -1,4 +1,4 @@
-import { Model, DataTypes, Op, ForeignKey } from 'sequelize';
+import { Model, DataTypes, Op, ForeignKey, Association } from 'sequelize';
 import { sequelize } from '../config';
 import { Account } from './accounts';
 
@@ -51,10 +51,24 @@ Transaction.init({
   },
   accountId: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
+    references: {
+      model: "Accounts",
+      key: "id"
+    }
   }
 }, {
   // Other model options go here
   sequelize, // We need to pass the connection instance
   modelName: 'Transaction' // We need to choose the model name
 });
+
+Transaction.belongsTo(Account, { 
+  foreignKey: 'accountId'
+})
+
+Account.hasMany(Transaction,  { 
+  foreignKey: 'accountId',
+  sourceKey: 'id',
+  as: 'transactions'
+})

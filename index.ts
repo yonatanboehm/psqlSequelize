@@ -1,24 +1,36 @@
 import { sequelize } from "./config";
-import { Transaction } from "./models/transactions";
 import { Account } from "./models/accounts";
+import { Transaction } from "./models/transactions";
 import { transactions } from "./data/transactions";
 import { accounts } from "./data/accounts";
+import express from "express";
+
+const app = express()
+
+const createAccounts = async () => {
+  await Account.bulkCreate(accounts)
+}
+
+const createTransactions = async () => {
+  await Transaction.bulkCreate(transactions)
+}
 
 try {
   (async () => {
-    await sequelize.sync()
+    await sequelize.sync({ force: true })
     console.log('++++++++++++++++++')
-    for (const account of accounts) {
-      await Account.create(account)
-    }
-    for (const transaction of transactions) {
-      await Transaction.create(transaction)
-    }
+
+    await createAccounts()
+
+    console.log('--------------------');
+    console.log('--Accounts created--');
+    console.log('--------------------');
+
+    await createTransactions()
 
     console.log('--------------------');
     console.log('Transactions created');
     console.log('--------------------');
-
     // const startDate: Date = new Date('2011-10-10')
     // const endDate: Date = new Date('2022-10-10')
 
@@ -26,7 +38,6 @@ try {
     // filteredTransactions.map(transaction => {
     //   console.log(transaction.dataValues)
     // })
-
   })()
 } catch (error: unknown) {
   if (error instanceof Error) {
@@ -35,3 +46,20 @@ try {
     console.error('Error: ' + error)
   }
 }
+
+// simple server to display JSON
+
+const port = 3000
+
+app.get('/', async (req, res) => {
+  const all = await Account.findAll({
+    include: [{
+      model: Transaction,
+      as: 'transactions'
+    }],
+    nest: true
+  })
+  res.json(all)
+})
+
+app.listen(port)

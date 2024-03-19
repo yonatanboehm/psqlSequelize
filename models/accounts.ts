@@ -1,5 +1,6 @@
-import { Model, DataTypes, Op } from 'sequelize';
+import { Model, DataTypes } from 'sequelize';
 import { sequelize } from '../config';
+import { Transaction } from './transactions';
 
 
 export interface AccountAttributes {
@@ -15,7 +16,6 @@ export class Account extends Model<AccountAttributes> {
   declare id: string
   declare name: string
   declare type: Type
-
 }
 
 Account.init({

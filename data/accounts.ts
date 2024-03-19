@@ -1,4 +1,4 @@
-import { uuid } from "uuidv4"
+import { v4 as uuid } from "uuid"
 import { AccountAttributes } from "../models/accounts"
 
 export const accounts: AccountAttributes[] = [
