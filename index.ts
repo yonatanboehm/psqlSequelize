@@ -53,9 +53,11 @@ const port = 3000
 
 app.get('/', async (req, res) => {
   const all = await Account.findAll({
+    attributes: { exclude: ['id', 'createdAt', 'updatedAt'] },
     include: [{
       model: Transaction,
-      as: 'transactions'
+      as: 'transactions',
+      attributes: { exclude: ['id', 'accountId', 'createdAt', 'updatedAt'] }
     }],
     nest: true
   })
