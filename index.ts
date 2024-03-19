@@ -7,37 +7,31 @@ import express from "express";
 
 const app = express()
 
-const createAccounts = async () => {
-  await Account.bulkCreate(accounts)
-}
+// const createAccounts = async () => {
+//   await Account.bulkCreate(accounts)
+// }
 
-const createTransactions = async () => {
-  await Transaction.bulkCreate(transactions)
-}
+// const createTransactions = async () => {
+//   await Transaction.bulkCreate(transactions)
+// }
 
 try {
   (async () => {
-    await sequelize.sync({ force: true })
-    console.log('++++++++++++++++++')
+    await sequelize.sync(/*{ force: true }*/)
+    // console.log('++++++++++++++++++')
 
-    await createAccounts()
+    // await createAccounts()
 
-    console.log('--------------------');
-    console.log('--Accounts created--');
-    console.log('--------------------');
+    // console.log('--------------------');
+    // console.log('--Accounts created--');
+    // console.log('--------------------');
 
-    await createTransactions()
+    // await createTransactions()
 
-    console.log('--------------------');
-    console.log('Transactions created');
-    console.log('--------------------');
-    // const startDate: Date = new Date('2011-10-10')
-    // const endDate: Date = new Date('2022-10-10')
+    // console.log('--------------------');
+    // console.log('Transactions created');
+    // console.log('--------------------');
 
-    // const filteredTransactions = await Transaction.findAllByDateRange(startDate, endDate)
-    // filteredTransactions.map(transaction => {
-    //   console.log(transaction.dataValues)
-    // })
   })()
 } catch (error: unknown) {
   if (error instanceof Error) {
@@ -51,17 +45,18 @@ try {
 
 const port = 3000
 
-app.get('/', async (req, res) => {
+app.get('/api/accounts', async (req, res) => {
   const all = await Account.findAll({
     attributes: { exclude: ['id', 'createdAt', 'updatedAt'] },
     include: [{
       model: Transaction,
       as: 'transactions',
       attributes: { exclude: ['id', 'accountId', 'createdAt', 'updatedAt'] }
-    }],
-    nest: true
+    }]
   })
   res.json(all)
 })
 
-app.listen(port)
+app.listen(port, () => {
+  console.log(`server running on port ${port}`)
+})

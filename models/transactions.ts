@@ -16,7 +16,7 @@ export class Transaction extends Model<TransactionAttributes> {
   declare date: Date
   declare amount: number
   declare description: string
-  declare accountId: ForeignKey<Account['id']>
+  declare accountId: string
 
   static async findAllByDateRange (startDate: Date, endDate: Date) {
     const transactionsBetweenDates = await Transaction.findAll({
@@ -67,7 +67,7 @@ Transaction.belongsTo(Account, {
   foreignKey: 'accountId'
 })
 
-Account.hasMany(Transaction,  { 
+Account.hasMany(Transaction,  {
   foreignKey: 'accountId',
   sourceKey: 'id',
   as: 'transactions'
